@@ -28,7 +28,7 @@ namespace DataPortability
             List<string> values = new List<string>();
 
             // Read the file and display it line by line.  
-            System.IO.StreamReader file = new System.IO.StreamReader("C:\\Users\\mikul\\Documents\\PROJEKT\\wwwhr_2017-10-30.sql");
+            System.IO.StreamReader file = new System.IO.StreamReader("<path>dumpfile.sql");
             while ((line = file.ReadLine()) != null)
             {
                 string[] rijeci = line.Split();
@@ -100,7 +100,7 @@ namespace DataPortability
             Font NormalFont = new iTextSharp.text.Font(arial, 12, Font.NORMAL);
             Font boldFont = new iTextSharp.text.Font(arial, 12, iTextSharp.text.Font.BOLD);
 
-            FileStream fs = new FileStream("C:\\Users\\mikul\\Documents\\PROJEKT\\" + query + ".pdf", FileMode.Create, FileAccess.Write, FileShare.None);
+            FileStream fs = new FileStream( "<path>"+query + ".pdf", FileMode.Create, FileAccess.Write, FileShare.None);
             Document doc = new Document();
             PdfWriter writer = PdfWriter.GetInstance(doc, fs);
             doc.Open();
@@ -135,7 +135,7 @@ namespace DataPortability
                 text += String.Join(",", val);
             }
 
-            File.WriteAllText("C:\\Users\\mikul\\Documents\\PROJEKT\\" + query + ".csv", text);
+            File.WriteAllText("<path>"+query + ".csv", text);
             Console.WriteLine("CSV stvoren\n");
 
             file.Close();
