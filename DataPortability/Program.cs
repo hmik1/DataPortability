@@ -34,6 +34,7 @@ namespace DataPortability
                 string[] rijeci = line.Split();
                 if (rijeci[0] == "INSERT")
                 {
+                    Console.WriteLine(line);
                     //pokupi nazive stupaca
                     rijeci = (line.Split(new Char[] { '(', ')' }))[1].Split(',');
                     for (int i = 0; i < rijeci.Length; i++)
@@ -46,7 +47,7 @@ namespace DataPortability
                     }
                 }
 
-                if (rijeci[0] == "VALUES")
+                if (line.Contains("VALUES"))
                 {
                     // pokupi sve retke dodane u tablicu
                     bool end = false;
@@ -114,8 +115,7 @@ namespace DataPortability
                     doc.Add(new Paragraph
                     {
                         new Chunk(columns[i] + ": ", boldFont),
-                        new Chunk(val[i], NormalFont
-                        )
+                        new Chunk(val[i], NormalFont)
                     });
 
                 }
